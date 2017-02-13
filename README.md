@@ -3,7 +3,6 @@
 1. Clone or download the repo.
 2. Open index.html in your browser to view the app.
 3. Or, you can set up a local server following [these](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Set_up_a_basic_working_environment) instructions.
-4. View the app [here]().
 
 
 ## How to use this application
