@@ -25,60 +25,59 @@ $(function() {
             });
         }
 
-          // Loop to verify each feed in allFeeds
-          for(var feed = 0, len = allFeeds.length; feed < len; feed++) {
-              testEachFeedInallFeeds(feed);
-          }
+            // Loop to verify each feed in allFeeds
+        for(var feed = 0, len = allFeeds.length; feed < len; feed++) {
+            testEachFeedInallFeeds(feed);
+        }
 
     });
 
     describe('The Menu', function() {
 
-       it('should have a hidden menu by default', function(){
-          expect(document.body.className).toContain('menu-hidden');
-       });
+        it('should have a hidden menu by default', function(){
+            expect($('body').hasClass('menu-hidden')).toBe(true);
+        });
 
         it('should display the menu onClick', function(){
             $('.menu-icon-link').trigger('click');
-            expect($('body')).not.toContain("menu-hidden");
+            expect($('body').hasClass('menu-hidden')).toBe(false);
         });
 
         it('should hide the menu when clicked again', function(){
             $('.menu-icon-link').trigger('click');
-            expect($('body').hasClass("menu-hidden")).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
     });
 
     describe('Async Initial Entries', function(){
 
-           beforeEach(function(done){
-             loadFeed(0, done);
-          })
+        beforeEach (function(done){
+            loadFeed(0, done);
+        });
 
-          it('when loadFeed is done there is an .entry element in container', function(){
+        it('when loadFeed is done there is an .entry element in container', function(){
             expect($('.feed .entry').size()).not.toBe(0);
-          })
+        });
 
-      });
+    });
 
     describe('New Feed Selection', function() {
 
         var oldFeed,
-        newFeed;
+            newFeed;
         beforeEach(function(done) {
             loadFeed(0, function() {
                 oldFeed = ($('.feed').html());
-            loadFeed(1, function() {
-                newFeed = ($('.feed').html());
+                loadFeed(1, function() {
+                    newFeed = ($('.feed').html());
                     done();
                 });
             });
         });
 
-        it('should change the content of the feed', function(done) {
+        it('should change the content of the feed', function() {
             expect(oldFeed).not.toEqual(newFeed);
-                done();
-            });
-});
+        });
+    });
 
 }());
